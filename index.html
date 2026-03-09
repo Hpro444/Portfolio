@@ -380,9 +380,9 @@
   <h1>Projects & Systems</h1>
   <p class="header-sub">A collection of end-to-end systems spanning AI, data engineering, full-stack development, and developer tooling.</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num">8</div><div class="stat-label">Projects</div></div>
-    <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Technologies</div></div>
-    <div class="stat"><div class="stat-num">6</div><div class="stat-label">GitHub Repos</div></div>
+    <div class="stat"><div class="stat-num">12</div><div class="stat-label">Projects</div></div>
+    <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Technologies</div></div>
+    <div class="stat"><div class="stat-num">9</div><div class="stat-label">GitHub Repos</div></div>
   </div>
 </header>
 
@@ -777,11 +777,200 @@
       </details>
     </div>
 
+    <!-- ── 9. Neural Network From Scratch ── -->
+    <div class="card" style="--card-accent: linear-gradient(90deg,#a78bfa,#818cf8);">
+      <div class="card-header">
+        <div class="card-icon" style="--icon-bg: rgba(167,139,250,.15);">🧠</div>
+        <div class="card-title-block">
+          <div class="card-title">Neural Network From Scratch</div>
+          <div class="card-subtitle">Custom Deep Learning Framework</div>
+        </div>
+      </div>
+
+      <p class="card-overview">A complete neural network framework built entirely from scratch in Python using only NumPy. Implements forward/backpropagation, multiple layer types, Adam optimizer, and model serialization — achieving 95–97% accuracy on MNIST.</p>
+
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">NumPy</span><span class="tag">Matplotlib</span>
+        <span class="tag">tqdm</span><span class="tag">Adam Optimizer</span><span class="tag">Backprop</span>
+      </div>
+
+      <details>
+        <summary>View Details</summary>
+        <div class="details-body">
+          <div>
+            <div class="detail-section-title">Key Features</div>
+            <ul class="features">
+              <li><strong>Full Framework:</strong> Forward propagation, backpropagation, and optimization from scratch</li>
+              <li><strong>Layer Types:</strong> Dense, Flatten, Input, Dropout with gradient computation</li>
+              <li><strong>Activation Functions:</strong> ReLU and Softmax with forward and backward passes</li>
+              <li><strong>Adam Optimizer:</strong> Adaptive learning rates for faster convergence</li>
+              <li><strong>Model Serialization:</strong> Save and load trained models to/from JSON</li>
+              <li><strong>Design Patterns:</strong> Factory pattern for extensible component creation</li>
+            </ul>
+          </div>
+          <div class="impact">
+            <div class="detail-section-title" style="margin-bottom:8px;">Impact</div>
+            <ul>
+              <li>96.5% test accuracy on MNIST with pure NumPy, no ML frameworks</li>
+              <li>Educational tool for understanding neural network internals</li>
+              <li>Demonstrates software engineering principles (factory pattern, ABCs) in ML</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- ── 10. Word2Vec Skip-gram ── -->
+    <div class="card" style="--card-accent: linear-gradient(90deg,#34d399,#60a5fa);">
+      <div class="card-header">
+        <div class="card-icon" style="--icon-bg: rgba(52,211,153,.15);">🔤</div>
+        <div class="card-title-block">
+          <div class="card-title">Word2Vec Skip-gram (NumPy)</div>
+          <div class="card-subtitle">NLP Embeddings from Scratch</div>
+        </div>
+      </div>
+
+      <p class="card-overview">Production-quality implementation of Word2Vec Skip-gram with Negative Sampling using pure NumPy. Features Vose's Alias Method for O(1) sampling, Mikolov subsampling, vectorized batch training, and 2D UMAP embedding visualization.</p>
+
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">NumPy</span><span class="tag">scikit-learn</span>
+        <span class="tag">UMAP</span><span class="tag">pytest</span><span class="tag">Matplotlib</span>
+      </div>
+
+      <details>
+        <summary>View Details</summary>
+        <div class="details-body">
+          <div>
+            <div class="detail-section-title">Architecture</div>
+            <div class="arch-block">preprocessing.py   → Tokenization, vocab, skip-gram pairs
+word2vec_sgns.py  → Model: init, train_step, save/load
+negative_sampler.py → Vose's alias O(1) sampling
+trainer.py        → Batching, checkpointing, loss tracking
+evaluate.py       → Cosine similarity, most_similar
+visualize.py      → Loss curves & 2D UMAP projections</div>
+          </div>
+          <div>
+            <div class="detail-section-title">Key Features</div>
+            <ul class="features">
+              <li><strong>Vectorized Training:</strong> Batch processing with einsum and add.at operations</li>
+              <li><strong>O(1) Negative Sampling:</strong> Vose's Alias Method for efficient training</li>
+              <li><strong>Mikolov Subsampling:</strong> Frequency-based word keep-probability formula</li>
+              <li><strong>Checkpointing:</strong> Per-epoch snapshots with metadata for experiment tracking</li>
+              <li><strong>Design Patterns:</strong> Singleton config, class logging decorator</li>
+            </ul>
+          </div>
+          <div class="impact">
+            <div class="detail-section-title" style="margin-bottom:8px;">Impact</div>
+            <ul>
+              <li>Full NLP pipeline demonstrating low-level algorithmic understanding</li>
+              <li>Reproducible experiments with seed control and comprehensive test coverage</li>
+            </ul>
+          </div>
+          <a class="gh-link" href="https://github.com/Hpro444/Word2vec-numpy.git" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </details>
+    </div>
+
+    <!-- ── 11. Deep Research ── -->
+    <div class="card" style="--card-accent: linear-gradient(90deg,#fb923c,#fbbf24);">
+      <div class="card-header">
+        <div class="card-icon" style="--icon-bg: rgba(251,146,60,.15);">🔬</div>
+        <div class="card-title-block">
+          <div class="card-title">Deep Research</div>
+          <div class="card-subtitle">Autonomous AI Research Agent System</div>
+        </div>
+      </div>
+
+      <p class="card-overview">Sophisticated multi-agent AI system for autonomous research investigations. Specialized agents collaborate to retrieve, analyze, and validate findings across complex topics using Ollama-backed LLMs, tool decorators, and structured state management.</p>
+
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Ollama</span><span class="tag">Multi-Agent</span>
+        <span class="tag">Docker</span><span class="tag">LLM</span><span class="tag">Wikipedia API</span>
+      </div>
+
+      <details>
+        <summary>View Details</summary>
+        <div class="details-body">
+          <div>
+            <div class="detail-section-title">Agent Architecture</div>
+            <ul class="features">
+              <li><strong>Deep Research Agent:</strong> Orchestrates the full investigation pipeline</li>
+              <li><strong>Retriever Agent:</strong> Semantic information gathering from Wikipedia and other sources</li>
+              <li><strong>Analyzer Agent:</strong> Evaluates data, identifies patterns, synthesizes insights</li>
+              <li><strong>Tester Agent:</strong> Validates hypotheses through systematic verification</li>
+              <li><strong>Tool Decorator Pattern:</strong> Dynamic tool registration without modifying core logic</li>
+            </ul>
+          </div>
+          <div class="impact">
+            <div class="detail-section-title" style="margin-bottom:8px;">Impact</div>
+            <ul>
+              <li>Automates complex multi-step research workflows end-to-end</li>
+              <li>Extensible via BaseAgent inheritance and decorator-based tool registration</li>
+              <li>Supports local, Docker (GPU), and remote Ollama deployments</li>
+            </ul>
+          </div>
+          <a class="gh-link" href="https://github.com/Hpro444/DeepResearch.git" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </details>
+    </div>
+
+    <!-- ── 12. Intent Embedding CLI ── -->
+    <div class="card" style="--card-accent: linear-gradient(90deg,#c084fc,#38bdf8);">
+      <div class="card-header">
+        <div class="card-icon" style="--icon-bg: rgba(192,132,252,.15);">🎯</div>
+        <div class="card-title-block">
+          <div class="card-title">Intent Embedding CLI</div>
+          <div class="card-subtitle">Semantic Intent Classification Tool</div>
+        </div>
+      </div>
+
+      <p class="card-overview">Production-ready CLI tool for intelligent intent classification using sentence embeddings and high-performance vector search. Pluggable architecture supports both FAISS and USearch backends for sub-millisecond query times at scale.</p>
+
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">SentenceTransformers</span><span class="tag">FAISS</span>
+        <span class="tag">USearch</span><span class="tag">NLP</span><span class="tag">Vector Search</span>
+      </div>
+
+      <details>
+        <summary>View Details</summary>
+        <div class="details-body">
+          <div>
+            <div class="detail-section-title">Key Features</div>
+            <ul class="features">
+              <li><strong>Pluggable Backends:</strong> FAISS and USearch engines swappable without code changes</li>
+              <li><strong>Training Pipeline:</strong> Custom model training from JSON/TXT labeled intent datasets</li>
+              <li><strong>Persistent Indexing:</strong> Pre-computed vector indices for sub-millisecond queries</li>
+              <li><strong>Dual CLI Modes:</strong> Train and inference modes with argument-based automation</li>
+              <li><strong>Cosine Similarity:</strong> Normalized vector matching with confidence scoring</li>
+            </ul>
+          </div>
+          <div class="impact">
+            <div class="detail-section-title" style="margin-bottom:8px;">Impact</div>
+            <ul>
+              <li>Real-time intent detection for chatbots, voice interfaces, and support routing</li>
+              <li>Modular design supports easy addition of new models or search engines</li>
+              <li>Production-grade error handling and logging for deployment readiness</li>
+            </ul>
+          </div>
+          <a class="gh-link" href="https://github.com/Hpro444/IntentClassification.git" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </details>
+    </div>
+
   </div>
 </main>
 
 <footer>
-  Built from Portfolio.docx &nbsp;·&nbsp; 8 projects &nbsp;·&nbsp; 2026
+  Built from Portfolio.docx &nbsp;·&nbsp; 12 projects &nbsp;·&nbsp; 2026
 </footer>
 
 </body>
