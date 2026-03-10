@@ -380,9 +380,9 @@
   <h1>Projects & Systems</h1>
   <p class="header-sub">A collection of end-to-end systems spanning AI, data engineering, full-stack development, and developer tooling.</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num">12</div><div class="stat-label">Projects</div></div>
-    <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Technologies</div></div>
-    <div class="stat"><div class="stat-num">9</div><div class="stat-label">GitHub Repos</div></div>
+    <div class="stat"><div class="stat-num">16</div><div class="stat-label">Projects</div></div>
+    <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Technologies</div></div>
+    <div class="stat"><div class="stat-num">14</div><div class="stat-label">GitHub Repos</div></div>
   </div>
 </header>
 
@@ -816,6 +816,10 @@
               <li>Demonstrates software engineering principles (factory pattern, ABCs) in ML</li>
             </ul>
           </div>
+          <a class="gh-link" href="https://github.com/Hpro444/NN_From_Scratch.git" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub
+          </a>
         </div>
       </details>
     </div>
@@ -966,12 +970,223 @@ visualize.py      → Loss curves & 2D UMAP projections</div>
       </details>
     </div>
 
+    <!-- ── 13. TranslateIt ── -->
+    <div class="card" style="--card-accent: linear-gradient(90deg,#06b6d4,#10b981);">
+      <div class="card-header">
+        <div class="card-icon" style="--icon-bg: rgba(6,182,212,.15);">🌐</div>
+        <div class="card-title-block">
+          <div class="card-title">TranslateIt</div>
+          <div class="card-subtitle">Production-Ready Translation Microservice</div>
+        </div>
+      </div>
+
+      <p class="card-overview">Opinionated FastAPI translation microservice stitching together automatic language detection, configurable in-memory caching, robust error handling, and detailed observability. Translates between any two languages with consistent structured JSON responses.</p>
+
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">deep-translator</span>
+        <span class="tag">langdetect</span><span class="tag">pytest</span><span class="tag">REST API</span>
+      </div>
+
+      <details>
+        <summary>View Details</summary>
+        <div class="details-body">
+          <div>
+            <div class="detail-section-title">Key Features</div>
+            <ul class="features">
+              <li><strong>4 REST Endpoints:</strong> Translation, language detection, supported languages, health check</li>
+              <li><strong>Auto Language Detection:</strong> <code style="color:#a8a0ff">langdetect</code> infers source language with confidence scores</li>
+              <li><strong>Smart Caching:</strong> In-memory cache with TTL and memory thresholds to skip redundant provider calls</li>
+              <li><strong>Singleton Config:</strong> <code style="color:#a8a0ff">config.ini</code> defaults merged with <code style="color:#a8a0ff">.env</code> overrides via python-dotenv</li>
+              <li><strong>Global Exception Handling:</strong> Consistent error shapes with aligned HTTP status codes</li>
+            </ul>
+          </div>
+          <div>
+            <div class="detail-section-title">Architecture</div>
+            <div class="arch-block">app.py  (entry point: middleware, routers, lifecycle)
+└─ project/
+   ├─ services/     → Translation + detection logic
+   ├─ routes/       → /api/v1 endpoints
+   ├─ models/       → Request/response schemas
+   ├─ config/       → Singleton Configuration class
+   ├─ logger/       → Rotating file + console handler
+   └─ error_handlers/ → Global exception mapping</div>
+          </div>
+          <div class="impact">
+            <div class="detail-section-title" style="margin-bottom:8px;">Impact</div>
+            <ul>
+              <li>Drop-in translation backend with Swagger/OpenAPI docs at <code style="color:#a8a0ff">/docs</code></li>
+              <li>Comprehensive test suite covering success and error paths with mocked providers</li>
+              <li>Secrets stay out of version control with <code style="color:#a8a0ff">.env.example</code> workflow</li>
+            </ul>
+          </div>
+          <a class="gh-link" href="https://github.com/Hpro444/TranslateIT.git" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </details>
+    </div>
+
+    <!-- ── 14. JavaPlus Interpreter ── -->
+    <div class="card" style="--card-accent: linear-gradient(90deg,#f59e0b,#ef4444);">
+      <div class="card-header">
+        <div class="card-icon" style="--icon-bg: rgba(245,158,11,.15);">⚡</div>
+        <div class="card-title-block">
+          <div class="card-title">JavaPlus Interpreter</div>
+          <div class="card-subtitle">ANTLR-Powered Language Interpreter & VM</div>
+        </div>
+      </div>
+
+      <p class="card-overview">Compact yet expressive interpreter fusing an ANTLR-powered frontend, a handwritten AST and type checker, and a bytecode-like virtual machine. Statically validates programs before running them safely with arrays, first-class functions, closures, and structured control flow.</p>
+
+      <div class="tags">
+        <span class="tag">Java</span><span class="tag">ANTLR4</span><span class="tag">Maven</span>
+        <span class="tag">AST</span><span class="tag">Bytecode VM</span><span class="tag">Type Checker</span>
+        <span class="tag">Closures</span>
+      </div>
+
+      <details>
+        <summary>View Details</summary>
+        <div class="details-body">
+          <div>
+            <div class="detail-section-title">Pipeline</div>
+            <div class="arch-block">JavaPlus.g4  →  CSTtoASTConverter  →  AST nodes
+                              ↓
+                         TypeCheck pass (scoped symbol tables,
+                           diagnostics with line/col detail)
+                              ↓
+                    Instruction emitter  →  VM execution
+                    (arithmetic, branches, closures, arrays)</div>
+          </div>
+          <div>
+            <div class="detail-section-title">Key Features</div>
+            <ul class="features">
+              <li><strong>Full Compiler Frontend:</strong> Parse tree → AST with source positions and semantic helpers</li>
+              <li><strong>Static Type Checking:</strong> Symbol resolution, null-reference guards, compatible operand inference</li>
+              <li><strong>Bytecode VM:</strong> Lean instruction set with arithmetic, branching, array ops, and closure invocation</li>
+              <li><strong>First-Class Closures:</strong> <code style="color:#a8a0ff">Blob</code>/<code style="color:#a8a0ff">UpvalueMapEntry</code> capture and <code style="color:#a8a0ff">BlobInvocation</code> call-stack inspection</li>
+              <li><strong>Dev Tooling:</strong> <code style="color:#a8a0ff">ASTPrettyPrinter</code> and <code style="color:#a8a0ff">ParseTreePrinter</code> for tree comparison</li>
+            </ul>
+          </div>
+          <div class="impact">
+            <div class="detail-section-title" style="margin-bottom:8px;">Impact</div>
+            <ul>
+              <li>Zero dependencies beyond ANTLR — lightweight and fully self-contained</li>
+              <li>Diagnostic-rich errors with line/column detail before any runtime execution</li>
+              <li>Structured for extensibility: new ops, types, and language features slot in cleanly</li>
+            </ul>
+          </div>
+          <a class="gh-link" href="https://github.com/Hpro444/JavaPlusInterpreter.git" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </details>
+    </div>
+
+    <!-- ── 15. Multithreaded Autocomplete Engine ── -->
+    <div class="card" style="--card-accent: linear-gradient(90deg,#64748b,#06b6d4);">
+      <div class="card-header">
+        <div class="card-icon" style="--icon-bg: rgba(100,116,139,.15);">🔍</div>
+        <div class="card-title-block">
+          <div class="card-title">Multithreaded Autocomplete Engine</div>
+          <div class="card-subtitle">Real-Time Prefix Search in C</div>
+        </div>
+      </div>
+
+      <p class="card-overview">Real-time autocomplete system built in C using POSIX threads. Watches directories for text files, indexes every word into a shared trie, and streams prefix-match completions live — with concurrent inserts and traversals running safely side-by-side.</p>
+
+      <div class="tags">
+        <span class="tag">C (C11)</span><span class="tag">pthreads</span><span class="tag">POSIX</span>
+        <span class="tag">Trie</span><span class="tag">Lock-Coupling</span><span class="tag">Systems</span>
+      </div>
+
+      <details>
+        <summary>View Details</summary>
+        <div class="details-body">
+          <div>
+            <div class="detail-section-title">Key Features</div>
+            <ul class="features">
+              <li><strong>Thread-Safe Trie:</strong> Per-node mutex locks with hand-over-hand (lock-coupling) locking for concurrent inserts and traversals</li>
+              <li><strong>Background Scanner Threads:</strong> Up to 10 threads poll directories every 5 s, detecting new or modified files via <code style="color:#a8a0ff">stat()</code> timestamps</li>
+              <li><strong>Live Search Thread:</strong> Prints all words matching a user prefix once per second, concurrent with ongoing file ingestion</li>
+              <li><strong>Clean Shutdown:</strong> <code style="color:#a8a0ff">pthread_cancel</code> + <code style="color:#a8a0ff">pthread_join</code> with full trie memory reclamation</li>
+            </ul>
+          </div>
+          <div class="impact">
+            <div class="detail-section-title" style="margin-bottom:8px;">Impact</div>
+            <ul>
+              <li>Demonstrates low-level concurrency — lock-coupling eliminates global lock contention</li>
+              <li>Handles live file system changes without interrupting search queries</li>
+              <li>Zero dependencies beyond POSIX libc — fully portable systems code</li>
+            </ul>
+          </div>
+          <a class="gh-link" href="https://github.com/Hpro444/MultithreadedAutocompleteEngine.git" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </details>
+    </div>
+
+    <!-- ── 16. CodeQuest ── -->
+    <div class="card" style="--card-accent: linear-gradient(90deg,#8b5cf6,#06b6d4);">
+      <div class="card-header">
+        <div class="card-icon" style="--icon-bg: rgba(139,92,246,.15);">🗂️</div>
+        <div class="card-title-block">
+          <div class="card-title">CodeQuest</div>
+          <div class="card-subtitle">Semantic Code Search Engine</div>
+        </div>
+      </div>
+
+      <p class="card-overview">Modular service for building, training, and evaluating semantic search indexes over code. Enables fast and accurate code retrieval using dense vector embeddings with fine-tuning support, achieving Recall@10 of 99.6% on the CosQA benchmark.</p>
+
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">FAISS</span><span class="tag">SentenceTransformers</span>
+        <span class="tag">FastAPI</span><span class="tag">Docker</span><span class="tag">Fine-tuning</span>
+        <span class="tag">Contrastive Learning</span>
+      </div>
+
+      <details>
+        <summary>View Details</summary>
+        <div class="details-body">
+          <div>
+            <div class="detail-section-title">Evaluation Results</div>
+            <div class="arch-block">Model (all-MiniLM-L6-v2)      Recall@10   MRR@10   NDCG@10
+─────────────────────────────────────────────────────────
+Base          (full functions)    0.978      0.809    0.853
+Fine-tuned    (full functions)    0.996 ▲    0.906    0.929
+Base          (signatures only)   0.702      0.493    0.547
+Fine-tuned    (signatures only)   0.836 ▲    0.622    0.678</div>
+          </div>
+          <div>
+            <div class="detail-section-title">Key Features</div>
+            <ul class="features">
+              <li><strong>Index Building:</strong> Encode code snippets into dense FAISS vectors for sub-millisecond retrieval</li>
+              <li><strong>Semantic Search:</strong> Query with natural language, retrieve most relevant code snippets</li>
+              <li><strong>Model Fine-tuning:</strong> SentenceTransformer training on code-search pairs via <code style="color:#a8a0ff">MultipleNegativesRankingLoss</code></li>
+              <li><strong>Retrieval Evaluation:</strong> Recall@K, MRR@K, and NDCG@K metrics built-in</li>
+              <li><strong>REST API:</strong> FastAPI endpoints for build, search, save, and load</li>
+              <li><strong>Docker-ready:</strong> CPU and CUDA images for reproducible deployment</li>
+            </ul>
+          </div>
+          <div class="impact">
+            <div class="detail-section-title" style="margin-bottom:8px;">Impact</div>
+            <ul>
+              <li>Fine-tuning improved Recall@10 by +1.8 pp on full functions and +13.4 pp on signatures</li>
+              <li>Modular architecture — swap models or search backends without changing business logic</li>
+              <li>Research-grade evaluation pipeline with reproducible experiment tracking</li>
+            </ul>
+          </div>
+          <a class="gh-link" href="https://github.com/Hpro444/CodeQuest.git" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </details>
+    </div>
+
   </div>
 </main>
-
-<footer>
-  Built from Portfolio.docx &nbsp;·&nbsp; 12 projects &nbsp;·&nbsp; 2026
-</footer>
-
 </body>
 </html>
