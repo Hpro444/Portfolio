@@ -380,9 +380,9 @@
   <h1>Projects & Systems</h1>
   <p class="header-sub">A collection of end-to-end systems spanning AI, data engineering, full-stack development, and developer tooling.</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num">16</div><div class="stat-label">Projects</div></div>
+    <div class="stat"><div class="stat-num">18</div><div class="stat-label">Projects</div></div>
     <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Technologies</div></div>
-    <div class="stat"><div class="stat-num">14</div><div class="stat-label">GitHub Repos</div></div>
+    <div class="stat"><div class="stat-num">16</div><div class="stat-label">GitHub Repos</div></div>
   </div>
 </header>
 
@@ -1179,6 +1179,116 @@ Fine-tuned    (signatures only)   0.836 ▲    0.622    0.678</div>
             </ul>
           </div>
           <a class="gh-link" href="https://github.com/Hpro444/CodeQuest.git" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </details>
+    </div>
+
+    <!-- ── ImageLab ── -->
+    <div class="card" style="--card-accent: linear-gradient(90deg,#6c63ff,#ff6584);">
+      <div class="card-header">
+        <div class="card-icon" style="--icon-bg: rgba(108,99,255,.15);">🖼️</div>
+        <div class="card-title-block">
+          <div class="card-title">ImageLab</div>
+          <div class="card-subtitle">Multi-Threaded Image Processing System</div>
+        </div>
+      </div>
+
+      <p class="card-overview">Sophisticated multi-threaded image processing system with a REPL interface. Demonstrates concurrent processing, design patterns (Singleton, Factory, Command), thread management, and robust software architecture using Python.</p>
+
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">NumPy</span><span class="tag">OpenCV</span>
+        <span class="tag">Multiprocessing</span><span class="tag">Threading</span><span class="tag">Pytest</span>
+        <span class="tag">Design Patterns</span>
+      </div>
+
+      <details>
+        <summary>View Details</summary>
+        <div class="details-body">
+          <div>
+            <div class="detail-section-title">Key Features</div>
+            <ul class="features">
+              <li><strong>Interactive REPL:</strong> Command-line interface for managing images and transformations (add, process, delete, list, describe)</li>
+              <li><strong>Multi-Threaded Architecture:</strong> Thread pool with multiprocessing Pool for parallel image transformations</li>
+              <li><strong>Image Transformations:</strong> Grayscale conversion, Gaussian blur, and brightness adjustment</li>
+              <li><strong>Robust Task Management:</strong> Task registry with unique IDs, JSON-based configuration for batch processing</li>
+            </ul>
+          </div>
+          <div>
+            <div class="detail-section-title">Architecture</div>
+            <ul class="features">
+              <li><strong>Singleton Pattern:</strong> Thread-safe Registry class ensuring single instance across the application</li>
+              <li><strong>Factory Pattern:</strong> CommandFactory maps user input strings to command functions</li>
+              <li><strong>Command Pattern:</strong> Encapsulates image operations as command objects</li>
+              <li><strong>Queue-Based Communication:</strong> NoticeQueue and OutputQueue for safe inter-thread messaging</li>
+            </ul>
+          </div>
+          <div class="impact">
+            <div class="detail-section-title" style="margin-bottom:8px;">Impact</div>
+            <ul>
+              <li>Demonstrates advanced Python concurrency with thread-safe data structures</li>
+              <li>Comprehensive unit test coverage with pytest, unittest, and tox support</li>
+              <li>Modular, extensible architecture for adding new transformations and commands</li>
+            </ul>
+          </div>
+          <a class="gh-link" href="https://github.com/Hpro444/ImageLab" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </details>
+    </div>
+
+    <!-- ── OCR Microservice ── -->
+    <div class="card" style="--card-accent: linear-gradient(90deg,#00c8ff,#6c63ff);">
+      <div class="card-header">
+        <div class="card-icon" style="--icon-bg: rgba(0,200,255,.15);">🔍</div>
+        <div class="card-title-block">
+          <div class="card-title">OCR Microservice</div>
+          <div class="card-subtitle">Production-Ready RESTful OCR API</div>
+        </div>
+      </div>
+
+      <p class="card-overview">Production-ready RESTful microservice leveraging PaddleOCR to extract text from images. Built with FastAPI and containerized with Docker, demonstrating expertise in modern API development, ML integration, and cloud-native deployment.</p>
+
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PaddleOCR</span>
+        <span class="tag">Docker</span><span class="tag">OpenCV</span><span class="tag">Pytest</span>
+        <span class="tag">REST API</span>
+      </div>
+
+      <details>
+        <summary>View Details</summary>
+        <div class="details-body">
+          <div>
+            <div class="detail-section-title">Key Features</div>
+            <ul class="features">
+              <li><strong>Text Extraction:</strong> Supports PNG, JPG and other formats with confidence scoring</li>
+              <li><strong>Advanced OCR:</strong> Automatic angle detection and correction, multi-language support</li>
+              <li><strong>Production Deployment:</strong> Dockerized with Docker Compose for one-command launch</li>
+              <li><strong>Clean API:</strong> Async FastAPI endpoint with multipart file upload handling</li>
+            </ul>
+          </div>
+          <div>
+            <div class="detail-section-title">Architecture</div>
+            <ul class="features">
+              <li><strong>FastAPI Application:</strong> Async endpoints running on Uvicorn ASGI server</li>
+              <li><strong>OCR Class:</strong> PaddleOCR wrapper with angle detection and confidence-aware extraction</li>
+              <li><strong>Containerization:</strong> Multi-stage Docker build with Docker Compose orchestration</li>
+              <li><strong>Test Suite:</strong> Unit, API, and integration tests with pytest and httpx</li>
+            </ul>
+          </div>
+          <div class="impact">
+            <div class="detail-section-title" style="margin-bottom:8px;">Impact</div>
+            <ul>
+              <li>Complete, production-ready ML-powered web service deployable in seconds</li>
+              <li>Showcases full-stack API development with containerization best practices</li>
+              <li>Scalable architecture ready for batch processing and caching enhancements</li>
+            </ul>
+          </div>
+          <a class="gh-link" href="https://github.com/Hpro444/OCR_Microservice" target="_blank">
             <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             View on GitHub
           </a>
