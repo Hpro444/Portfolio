@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technologies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0c11;
+      --surface: rgba(21,24,32,.72);
+      --surface2: #1c2030;
+      --border: #252a3a;
+      --accent: #6c63ff;
+      --accent2: #00c8ff;
+      --text: #e2e8f0;
+      --muted: #8892a4;
+    }
+
+    html { scroll-behavior: smooth; background: var(--bg); }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: transparent;
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    #bg-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 60% at 15% 0%, rgba(108,99,255,.10) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 60% at 90% 100%, rgba(0,200,255,.08) 0%, transparent 60%),
+        var(--bg);
+    }
+
+    nav.topnav, header, main, footer { position: relative; z-index: 1; }
+
+    /* ── Top nav ── */
+    nav.topnav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 28px;
+      background: rgba(10,12,17,.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav.topnav .brand {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-weight: 700; font-size: 1rem; letter-spacing: -.01em;
+      color: var(--text); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 9px;
+    }
+    nav.topnav .brand .logo { color: var(--accent); font-size: 1.15rem; }
+    .navlinks { display: flex; gap: 8px; }
+    .navlinks a {
+      font-size: .85rem; font-weight: 600; color: var(--muted);
+      text-decoration: none; padding: 7px 16px; border-radius: 8px;
+      border: 1px solid transparent;
+      transition: color .2s, background .2s, border-color .2s;
+    }
+    .navlinks a:hover { color: var(--text); background: rgba(108,99,255,.08); }
+    .navlinks a.active { color: #fff; border-color: rgba(108,99,255,.4); background: rgba(108,99,255,.14); }
+
+    /* ── Header ── */
+    header {
+      overflow: hidden;
+      padding: 90px 24px 60px;
+      text-align: center;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 25%, rgba(108,99,255,.16) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 80% 75%, rgba(0,200,255,.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .header-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(108,99,255,.4);
+      background: rgba(108,99,255,.1);
+      backdrop-filter: blur(8px);
+      font-size: .75rem; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: #b7b0ff; margin-bottom: 22px;
+    }
+    h1 {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700; letter-spacing: -.02em; line-height: 1.1;
+      background: linear-gradient(135deg, #fff 20%, #b7b0ff 70%, #7fd9ff 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 16px;
+    }
+    .header-sub { color: var(--muted); font-size: 1.05rem; max-width: 580px; margin: 0 auto 34px; }
+    .stats { display: flex; justify-content: center; gap: 44px; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: 2rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .stat-label { font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+
+    /* ── Layout ── */
+    main { max-width: 1100px; margin: 0 auto; padding: 30px 24px 90px; }
+
+    .tech-section { margin-bottom: 46px; }
+
+    .tech-cat {
+      display: flex; align-items: center; gap: 13px; margin-bottom: 20px;
+    }
+    .tech-cat .ico {
+      width: 42px; height: 42px; border-radius: 12px;
+      display: grid; place-items: center; font-size: 1.2rem; flex-shrink: 0;
+      background: color-mix(in srgb, var(--cat) 16%, transparent);
+      color: var(--cat);
+      border: 1px solid color-mix(in srgb, var(--cat) 32%, transparent);
+    }
+    .tech-cat h2 {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-size: 1.25rem; font-weight: 700; letter-spacing: -.01em; color: var(--text);
+    }
+    .tech-cat .count {
+      margin-left: 8px; font-size: .78rem; font-weight: 600; color: var(--muted);
+      background: var(--surface2); border: 1px solid var(--border);
+      padding: 2px 10px; border-radius: 999px;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 14px;
+    }
+
+    .tech {
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--cat, var(--accent));
+      border-radius: 12px;
+      padding: 16px 18px;
+      transition: transform .22s cubic-bezier(.2,.7,.2,1), border-color .22s, box-shadow .22s;
+      opacity: 0; transform: translateY(16px);
+    }
+    .tech.revealed { opacity: 1; transform: none; }
+    .tech:hover {
+      transform: translateY(-4px);
+      border-color: color-mix(in srgb, var(--cat) 50%, var(--border));
+      box-shadow: 0 16px 34px rgba(0,0,0,.4);
+    }
+    .tech-name { font-weight: 700; font-size: .95rem; color: var(--text); margin-bottom: 5px; }
+    .tech-desc { font-size: .82rem; color: var(--muted); line-height: 1.5; }
+
+    footer {
+      text-align: center; padding: 34px;
+      font-size: .8rem; color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--accent2); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 560px) {
+      .tech-grid { grid-template-columns: 1fr; }
+      nav.topnav { padding: 12px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<nav class="topnav">
+  <a class="brand" href="index.html"><span class="logo">◆</span> Portfolio</a>
+  <div class="navlinks">
+    <a href="index.html">Projects</a>
+    <a href="technologies.html" class="active">Technologies</a>
+  </div>
+</nav>
+
+<header>
+  <div class="header-badge">Tech Stack</div>
+  <h1>Technologies</h1>
+  <p class="header-sub">The languages, frameworks, and tools I've worked with across my projects — grouped by area, with a short note on each.</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-num" id="tech-count">0</div><div class="stat-label">Technologies</div></div>
+    <div class="stat"><div class="stat-num">12</div><div class="stat-label">Categories</div></div>
+  </div>
+</header>
+
+<main>
+
+  <!-- Languages -->
+  <section class="tech-section" style="--cat:#6c63ff;">
+    <div class="tech-cat"><div class="ico">💻</div><h2>Languages</h2><span class="count"></span></div>
+    <div class="tech-grid">
+      <div class="tech"><div class="tech-name">Python</div><div class="tech-desc">My main language for AI/ML, data pipelines, and backend APIs.</div></div>
+      <div class="tech"><div class="tech-name">Java</div><div class="tech-desc">JVM language powering microservices, interpreters, and desktop apps.</div></div>
+      <div class="tech"><div class="tech-name">Go</div><div class="tech-desc">Concurrent, compiled language for high-performance microservices.</div></div>
+      <div class="tech"><div class="tech-name">TypeScript</div><div class="tech-desc">Typed JavaScript for robust, maintainable frontends.</div></div>
+      <div class="tech"><div class="tech-name">JavaScript</div><div class="tech-desc">Drives interactive web UIs and React components.</div></div>
+      <div class="tech"><div class="tech-name">Kotlin</div><div class="tech-desc">Modern JVM language used for IntelliJ plugin development.</div></div>
+      <div class="tech"><div class="tech-name">C</div><div class="tech-desc">Low-level systems programming for performance-critical concurrency (C11).</div></div>
+    </div>
+  </section>
+
+  <!-- Backend & APIs -->
+  <section class="tech-section" style="--cat:#34d399;">
+    <div class="tech-cat"><div class="ico">⚙️</div><h2>Backend &amp; APIs</h2><span class="count"></span></div>
+    <div class="tech-grid">
+      <div class="tech"><div class="tech-name">FastAPI</div><div class="tech-desc">Async Python framework for high-performance REST APIs.</div></div>
+      <div class="tech"><div class="tech-name">Spring Boot</div><div class="tech-desc">Java framework for production-grade backend services.</div></div>
+      <div class="tech"><div class="tech-name">Spring Cloud</div><div class="tech-desc">Microservice tooling: gateway, config, and resilience.</div></div>
+      <div class="tech"><div class="tech-name">Eureka</div><div class="tech-desc">Service discovery and registry for microservices.</div></div>
+      <div class="tech"><div class="tech-name">gRPC</div><div class="tech-desc">High-performance, contract-first RPC between services.</div></div>
+      <div class="tech"><div class="tech-name">REST API</div><div class="tech-desc">HTTP-based API design used across services.</div></div>
+      <div class="tech"><div class="tech-name">WebSockets</div><div class="tech-desc">Real-time, bidirectional client–server communication.</div></div>
+    </div>
+  </section>
+
+  <!-- Frontend -->
+  <section class="tech-section" style="--cat:#00c8ff;">
+    <div class="tech-cat"><div class="ico">🎨</div><h2>Frontend &amp; UI</h2><span class="count"></span></div>
+    <div class="tech-grid">
+      <div class="tech"><div class="tech-name">React</div><div class="tech-desc">Component-based library for building single-page apps.</div></div>
+      <div class="tech"><div class="tech-name">Angular</div><div class="tech-desc">Structured TypeScript framework for large web apps.</div></div>
+      <div class="tech"><div class="tech-name">JavaFX</div><div class="tech-desc">Toolkit for building rich Java desktop interfaces.</div></div>
+      <div class="tech"><div class="tech-name">Streamlit</div><div class="tech-desc">Turns Python scripts into interactive data and ML apps.</div></div>
+    </div>
+  </section>
+
+  <!-- AI / ML / NLP -->
+  <section class="tech-section" style="--cat:#ff6584;">
+    <div class="tech-cat"><div class="ico">🤖</div><h2>AI · ML · NLP</h2><span class="count"></span></div>
+    <div class="tech-grid">
+      <div class="tech"><div class="tech-name">PyTorch</div><div class="tech-desc">Deep learning framework for building neural networks.</div></div>
+      <div class="tech"><div class="tech-name">scikit-learn</div><div class="tech-desc">Classical machine learning toolkit for Python.</div></div>
+      <div class="tech"><div class="tech-name">LightGBM</div><div class="tech-desc">Fast, accurate gradient-boosting framework.</div></div>
+      <div class="tech"><div class="tech-name">XGBoost</div><div class="tech-desc">Gradient-boosted decision trees for tabular ML.</div></div>
+      <div class="tech"><div class="tech-name">Hugging Face</div><div class="tech-desc">Pretrained transformer models and NLP tooling.</div></div>
+      <div class="tech"><div class="tech-name">LangChain</div><div class="tech-desc">Framework for building LLM-powered applications.</div></div>
+      <div class="tech"><div class="tech-name">LangGraph</div><div class="tech-desc">Graph-based orchestration for agentic LLM workflows.</div></div>
+      <div class="tech"><div class="tech-name">Ollama</div><div class="tech-desc">Run large language models locally.</div></div>
+      <div class="tech"><div class="tech-name">OpenAI API</div><div class="tech-desc">Access to hosted large language models.</div></div>
+      <div class="tech"><div class="tech-name">SentenceTransformers</div><div class="tech-desc">Embedding models for semantic search.</div></div>
+      <div class="tech"><div class="tech-name">FAISS</div><div class="tech-desc">Library for fast vector similarity search.</div></div>
+      <div class="tech"><div class="tech-name">USearch</div><div class="tech-desc">Lightweight, high-speed vector search engine.</div></div>
+      <div class="tech"><div class="tech-name">RapidFuzz</div><div class="tech-desc">Fast fuzzy string matching in C/Python.</div></div>
+      <div class="tech"><div class="tech-name">NumPy</div><div class="tech-desc">Numerical computing with n-dimensional arrays.</div></div>
+      <div class="tech"><div class="tech-name">Pandas</div><div class="tech-desc">Data manipulation and analysis.</div></div>
+      <div class="tech"><div class="tech-name">Matplotlib</div><div class="tech-desc">Plotting and data visualization.</div></div>
+      <div class="tech"><div class="tech-name">UMAP</div><div class="tech-desc">Dimensionality reduction for embedding visualization.</div></div>
+      <div class="tech"><div class="tech-name">OpenCV</div><div class="tech-desc">Computer vision and image processing.</div></div>
+      <div class="tech"><div class="tech-name">Tesseract</div><div class="tech-desc">Open-source OCR engine for text extraction.</div></div>
+      <div class="tech"><div class="tech-name">PaddleOCR</div><div class="tech-desc">Deep-learning OCR with multi-language support.</div></div>
+    </div>
+  </section>
+
+  <!-- Data & Streaming -->
+  <section class="tech-section" style="--cat:#38bdf8;">
+    <div class="tech-cat"><div class="ico">🌊</div><h2>Data &amp; Streaming</h2><span class="count"></span></div>
+    <div class="tech-grid">
+      <div class="tech"><div class="tech-name">Apache Kafka</div><div class="tech-desc">Distributed event-streaming platform.</div></div>
+      <div class="tech"><div class="tech-name">Apache Spark</div><div class="tech-desc">Large-scale distributed data processing.</div></div>
+      <div class="tech"><div class="tech-name">PySpark</div><div class="tech-desc">Python API for Apache Spark.</div></div>
+      <div class="tech"><div class="tech-name">Databricks</div><div class="tech-desc">Managed analytics platform built on Spark.</div></div>
+      <div class="tech"><div class="tech-name">RabbitMQ</div><div class="tech-desc">Message broker for event-driven, asynchronous systems.</div></div>
+    </div>
+  </section>
+
+  <!-- Databases & Storage -->
+  <section class="tech-section" style="--cat:#fbbf24;">
+    <div class="tech-cat"><div class="ico">🗄️</div><h2>Databases &amp; Storage</h2><span class="count"></span></div>
+    <div class="tech-grid">
+      <div class="tech"><div class="tech-name">PostgreSQL</div><div class="tech-desc">Powerful open-source relational database.</div></div>
+      <div class="tech"><div class="tech-name">MySQL</div><div class="tech-desc">Widely-used relational database.</div></div>
+      <div class="tech"><div class="tech-name">Redis</div><div class="tech-desc">In-memory data store for caching and sessions.</div></div>
+      <div class="tech"><div class="tech-name">InfluxDB</div><div class="tech-desc">Time-series database for metrics and telemetry.</div></div>
+      <div class="tech"><div class="tech-name">DynamoDB</div><div class="tech-desc">AWS-managed serverless NoSQL database.</div></div>
+      <div class="tech"><div class="tech-name">H2</div><div class="tech-desc">Lightweight in-memory database for the JVM.</div></div>
+      <div class="tech"><div class="tech-name">MinIO</div><div class="tech-desc">High-performance S3-compatible object storage.</div></div>
+    </div>
+  </section>
+
+  <!-- Cloud & DevOps -->
+  <section class="tech-section" style="--cat:#fb923c;">
+    <div class="tech-cat"><div class="ico">☁️</div><h2>Cloud &amp; DevOps</h2><span class="count"></span></div>
+    <div class="tech-grid">
+      <div class="tech"><div class="tech-name">AWS Lambda</div><div class="tech-desc">Serverless compute that runs code on demand.</div></div>
+      <div class="tech"><div class="tech-name">API Gateway</div><div class="tech-desc">Managed entry point for AWS-backed APIs.</div></div>
+      <div class="tech"><div class="tech-name">Cognito</div><div class="tech-desc">AWS user authentication and identity management.</div></div>
+      <div class="tech"><div class="tech-name">SQS</div><div class="tech-desc">Managed message queue for async workloads.</div></div>
+      <div class="tech"><div class="tech-name">EventBridge</div><div class="tech-desc">Event bus and scheduling for AWS services.</div></div>
+      <div class="tech"><div class="tech-name">SES</div><div class="tech-desc">AWS email-sending service.</div></div>
+      <div class="tech"><div class="tech-name">Syndicate</div><div class="tech-desc">Infrastructure-as-code for AWS serverless apps.</div></div>
+      <div class="tech"><div class="tech-name">Docker</div><div class="tech-desc">Containerization for reproducible deployments.</div></div>
+      <div class="tech"><div class="tech-name">Docker Compose</div><div class="tech-desc">Orchestrates multi-container apps locally.</div></div>
+      <div class="tech"><div class="tech-name">OpenTelemetry</div><div class="tech-desc">Vendor-neutral tracing and metrics instrumentation.</div></div>
+      <div class="tech"><div class="tech-name">Prometheus</div><div class="tech-desc">Metrics collection, querying, and alerting.</div></div>
+      <div class="tech"><div class="tech-name">Grafana</div><div class="tech-desc">Dashboards and visualization for metrics and logs.</div></div>
+    </div>
+  </section>
+
+  <!-- Messaging & Auth -->
+  <section class="tech-section" style="--cat:#a78bfa;">
+    <div class="tech-cat"><div class="ico">🔐</div><h2>Authentication</h2><span class="count"></span></div>
+    <div class="tech-grid">
+      <div class="tech"><div class="tech-name">JWT</div><div class="tech-desc">Stateless, signed authentication tokens.</div></div>
+      <div class="tech"><div class="tech-name">OAuth2</div><div class="tech-desc">Standard authorization framework for secure access.</div></div>
+    </div>
+  </section>
+
+  <!-- Build & Testing -->
+  <section class="tech-section" style="--cat:#10b981;">
+    <div class="tech-cat"><div class="ico">🧪</div><h2>Build &amp; Testing</h2><span class="count"></span></div>
+    <div class="tech-grid">
+      <div class="tech"><div class="tech-name">Maven</div><div class="tech-desc">Build and dependency management for Java.</div></div>
+      <div class="tech"><div class="tech-name">Gradle</div><div class="tech-desc">Flexible build automation for JVM projects.</div></div>
+      <div class="tech"><div class="tech-name">JUnit 5</div><div class="tech-desc">Testing framework for Java.</div></div>
+      <div class="tech"><div class="tech-name">pytest</div><div class="tech-desc">Testing framework for Python.</div></div>
+      <div class="tech"><div class="tech-name">ANTLR4</div><div class="tech-desc">Parser generator for building languages and DSLs.</div></div>
+    </div>
+  </section>
+
+  <!-- Concurrency & Systems -->
+  <section class="tech-section" style="--cat:#f59e0b;">
+    <div class="tech-cat"><div class="ico">🧵</div><h2>Concurrency &amp; Systems</h2><span class="count"></span></div>
+    <div class="tech-grid">
+      <div class="tech"><div class="tech-name">pthreads</div><div class="tech-desc">POSIX threads for low-level concurrency in C.</div></div>
+      <div class="tech"><div class="tech-name">POSIX</div><div class="tech-desc">Portable OS APIs for systems programming.</div></div>
+      <div class="tech"><div class="tech-name">Multiprocessing</div><div class="tech-desc">Parallel execution across processes in Python.</div></div>
+      <div class="tech"><div class="tech-name">Threading</div><div class="tech-desc">Concurrent execution within a single process.</div></div>
+      <div class="tech"><div class="tech-name">Trie</div><div class="tech-desc">Prefix-tree data structure for fast text lookups.</div></div>
+      <div class="tech"><div class="tech-name">Lock-Coupling</div><div class="tech-desc">Fine-grained locking for concurrent data structures.</div></div>
+    </div>
+  </section>
+
+  <!-- Libraries & Utilities -->
+  <section class="tech-section" style="--cat:#c084fc;">
+    <div class="tech-cat"><div class="ico">🧰</div><h2>Libraries &amp; Utilities</h2><span class="count"></span></div>
+    <div class="tech-grid">
+      <div class="tech"><div class="tech-name">Jackson</div><div class="tech-desc">JSON serialization and parsing for Java.</div></div>
+      <div class="tech"><div class="tech-name">Gson</div><div class="tech-desc">Google's JSON library for Java.</div></div>
+      <div class="tech"><div class="tech-name">OSHI</div><div class="tech-desc">Cross-platform system and hardware info for Java.</div></div>
+      <div class="tech"><div class="tech-name">tqdm</div><div class="tech-desc">Progress bars for Python loops and pipelines.</div></div>
+      <div class="tech"><div class="tech-name">langdetect</div><div class="tech-desc">Language detection for text input.</div></div>
+      <div class="tech"><div class="tech-name">deep-translator</div><div class="tech-desc">Multi-provider text translation library.</div></div>
+    </div>
+  </section>
+
+  <!-- Concepts & Techniques -->
+  <section class="tech-section" style="--cat:#06b6d4;">
+    <div class="tech-cat"><div class="ico">🧠</div><h2>Concepts &amp; Techniques</h2><span class="count"></span></div>
+    <div class="tech-grid">
+      <div class="tech"><div class="tech-name">RAG</div><div class="tech-desc">Retrieval-Augmented Generation — grounding LLMs in retrieved documents.</div></div>
+      <div class="tech"><div class="tech-name">ReAct</div><div class="tech-desc">Reasoning-and-acting pattern for tool-using agents.</div></div>
+      <div class="tech"><div class="tech-name">Contrastive Learning</div><div class="tech-desc">Training embeddings by pulling similar items together.</div></div>
+      <div class="tech"><div class="tech-name">Vector Search</div><div class="tech-desc">Semantic retrieval over high-dimensional embeddings.</div></div>
+      <div class="tech"><div class="tech-name">Multi-Agent Systems</div><div class="tech-desc">Coordinating specialized agents toward a shared goal.</div></div>
+      <div class="tech"><div class="tech-name">Consistent Hashing</div><div class="tech-desc">Balanced key distribution across distributed nodes.</div></div>
+      <div class="tech"><div class="tech-name">Chord DHT</div><div class="tech-desc">Distributed hash table for peer-to-peer routing.</div></div>
+      <div class="tech"><div class="tech-name">Ricart-Agrawala</div><div class="tech-desc">Distributed mutual-exclusion algorithm.</div></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Designed &amp; built by <strong style="color:var(--text)">subin</strong> · <a href="index.html">← Back to Projects</a> · <span id="year"></span></p>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* per-category counts + total */
+  var total = 0;
+  document.querySelectorAll('.tech-section').forEach(function (sec) {
+    var n = sec.querySelectorAll('.tech').length;
+    total += n;
+    var c = sec.querySelector('.count');
+    if (c) c.textContent = n;
+  });
+  var countEl = document.getElementById('tech-count');
+
+  /* scroll-reveal tech cards */
+  var techs = document.querySelectorAll('.tech');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    techs.forEach(function (t) { t.classList.add('revealed'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          var grid = en.target.parentNode;
+          var idx = Array.prototype.indexOf.call(grid.children, en.target);
+          en.target.style.transitionDelay = Math.min(idx % 8, 7) * 45 + 'ms';
+          en.target.classList.add('revealed');
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+    techs.forEach(function (t) { io.observe(t); });
+  }
+
+  /* animated count-up for the header stat */
+  if (countEl) {
+    if (reduceMotion) { countEl.textContent = total; }
+    else {
+      var start = null, dur = 900;
+      function step(ts) {
+        if (start === null) start = ts;
+        var p = Math.min((ts - start) / dur, 1);
+        countEl.textContent = Math.round(p * total);
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+  }
+
+  /* footer year */
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  /* ───────── interactive particle-network background ───────── */
+  var canvas = document.getElementById('bg-canvas');
+  var ctx = canvas.getContext('2d');
+  var W, H, DPR, particles = [];
+  var mouse = { x: null, y: null };
+
+  function size() {
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = W * DPR; canvas.height = H * DPR;
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    build();
+  }
+  function build() {
+    var density = Math.min(Math.floor((W * H) / 16000), 110);
+    particles = [];
+    for (var i = 0; i < density; i++) {
+      particles.push({
+        x: Math.random() * W, y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35,
+        r: Math.random() * 1.6 + 0.6
+      });
+    }
+  }
+  var LINK2 = 140 * 140, MOUSE2 = 180 * 180;
+  function frame() {
+    ctx.clearRect(0, 0, W, H);
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+      if (mouse.x !== null) {
+        var mdx = mouse.x - p.x, mdy = mouse.y - p.y, md2 = mdx * mdx + mdy * mdy;
+        if (md2 < MOUSE2 && md2 > 1) { var f = (1 - md2 / MOUSE2) * 0.025; p.x += mdx * f; p.y += mdy * f; }
+      }
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(150,160,255,0.55)'; ctx.fill();
+      for (var j = i + 1; j < particles.length; j++) {
+        var q = particles[j], dx = p.x - q.x, dy = p.y - q.y, d2 = dx * dx + dy * dy;
+        if (d2 < LINK2) {
+          var a = (1 - d2 / LINK2) * 0.5;
+          ctx.strokeStyle = 'rgba(108,120,255,' + a + ')'; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+        }
+      }
+      if (mouse.x !== null) {
+        var dxm = p.x - mouse.x, dym = p.y - mouse.y, dm2 = dxm * dxm + dym * dym;
+        if (dm2 < MOUSE2) {
+          var am = (1 - dm2 / MOUSE2) * 0.8;
+          ctx.strokeStyle = 'rgba(0,200,255,' + am + ')'; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+  window.addEventListener('resize', size);
+  window.addEventListener('mousemove', function (e) { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener('mouseout', function () { mouse.x = mouse.y = null; });
+
+  size();
+  if (!reduceMotion) requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

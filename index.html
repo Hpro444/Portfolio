@@ -49,7 +49,39 @@
         var(--bg);
     }
 
-    header, main, footer { position: relative; z-index: 1; }
+    nav.topnav, header, main, footer { position: relative; z-index: 1; }
+
+    /* ── Top nav ── */
+    nav.topnav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 28px;
+      background: rgba(10,12,17,.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav.topnav .brand {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-weight: 700; font-size: 1rem; letter-spacing: -.01em;
+      color: var(--text); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 9px;
+    }
+    nav.topnav .brand .logo { color: var(--accent); font-size: 1.15rem; }
+    .navlinks { display: flex; gap: 8px; }
+    .navlinks a {
+      font-size: .85rem; font-weight: 600; color: var(--muted);
+      text-decoration: none; padding: 7px 16px; border-radius: 8px;
+      border: 1px solid transparent;
+      transition: color .2s, background .2s, border-color .2s;
+    }
+    .navlinks a:hover { color: var(--text); background: rgba(108,99,255,.08); }
+    .navlinks a.active { color: #fff; border-color: rgba(108,99,255,.4); background: rgba(108,99,255,.14); }
+    @media (max-width: 560px) { nav.topnav { padding: 12px 16px; } }
 
     /* ── Header ── */
     header {
@@ -549,12 +581,20 @@
 
 <canvas id="bg-canvas"></canvas>
 
+<nav class="topnav">
+  <a class="brand" href="index.html"><span class="logo">◆</span> Portfolio</a>
+  <div class="navlinks">
+    <a href="index.html" class="active">Projects</a>
+    <a href="technologies.html">Technologies</a>
+  </div>
+</nav>
+
 <header>
   <div class="header-badge"><span class="dot"></span>Software Engineering Portfolio</div>
   <h1>Projects & Systems</h1>
   <p class="header-sub">A collection of end-to-end systems spanning AI, data engineering, full-stack development, and developer tooling.</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num">23</div><div class="stat-label">Projects</div></div>
+    <div class="stat"><div class="stat-num">24</div><div class="stat-label">Projects</div></div>
     <div class="stat"><div class="stat-num">60+</div><div class="stat-label">Technologies</div></div>
     <div class="stat"><div class="stat-num">21</div><div class="stat-label">GitHub Repos</div></div>
   </div>
@@ -734,6 +774,46 @@
       </details>
     </div>
 
+    <!-- ── Automotive Advisor (Advisor) ── -->
+    <div class="card" style="--card-accent: linear-gradient(90deg,#f43f5e,#fb923c);">
+      <div class="card-header">
+        <div class="card-icon" style="--icon-bg: rgba(244,63,94,.15);">🚗</div>
+        <div class="card-title-block">
+          <div class="card-title">Automotive Advisor</div>
+          <div class="card-subtitle">Advisor · Multilingual Vehicle Q&amp;A Assistant</div>
+        </div>
+      </div>
+
+      <p class="card-overview">A conversational AI assistant that answers questions about vehicles by drawing on a library of automotive documentation. Users can ask about models, engines, and specifications, or compare vehicles in plain language — and get clear answers back in the same language they asked in, across Slovenian, German, and English.</p>
+
+      <div class="tags">
+        <span class="tag">AI Assistant</span><span class="tag">Multilingual</span><span class="tag">Vehicle Knowledge</span>
+        <span class="tag">Document Q&amp;A</span><span class="tag">Conversational</span>
+      </div>
+
+      <details>
+        <summary>View Details</summary>
+        <div class="details-body">
+          <div>
+            <div class="detail-section-title">What It Does</div>
+            <ul class="features">
+              <li><strong>Natural-Language Q&amp;A:</strong> Ask about vehicle models, engine options, and specifications in everyday language</li>
+              <li><strong>Multilingual:</strong> Understands and replies in Slovenian, German, and English — in whichever language the user writes</li>
+              <li><strong>Model Comparisons:</strong> Get side-by-side answers comparing different vehicles for a given need</li>
+              <li><strong>Grounded Answers:</strong> Responses are based on the client's own vehicle documentation</li>
+            </ul>
+          </div>
+          <div class="impact">
+            <div class="detail-section-title" style="margin-bottom:8px;">My Role</div>
+            <ul>
+              <li>Advisor on the project</li>
+              <li>Set up the initial project structure</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </div>
+
     <!-- ── 1. Bagley ── -->
     <div class="card" style="--card-accent: linear-gradient(90deg,#6c63ff,#00c8ff);">
       <div class="card-header">
@@ -790,8 +870,8 @@
       <div class="card-header">
         <div class="card-icon" style="--icon-bg: rgba(246,216,96,.12);">🛡️</div>
         <div class="card-title-block">
-          <div class="card-title">Multimodal Hate Speech Detection</div>
-          <div class="card-subtitle">Safe Content Analysis Platform</div>
+          <div class="card-title">Multimodal Hate Speech Detection 🏆</div>
+          <div class="card-subtitle">2nd Place · GDG Hackathon · Safe Content Analysis Platform</div>
         </div>
       </div>
 
