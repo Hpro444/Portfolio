@@ -380,9 +380,9 @@
   <h1>Projects & Systems</h1>
   <p class="header-sub">A collection of end-to-end systems spanning AI, data engineering, full-stack development, and developer tooling.</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num">18</div><div class="stat-label">Projects</div></div>
-    <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Technologies</div></div>
-    <div class="stat"><div class="stat-num">16</div><div class="stat-label">GitHub Repos</div></div>
+    <div class="stat"><div class="stat-num">23</div><div class="stat-label">Projects</div></div>
+    <div class="stat"><div class="stat-num">60+</div><div class="stat-label">Technologies</div></div>
+    <div class="stat"><div class="stat-num">21</div><div class="stat-label">GitHub Repos</div></div>
   </div>
 </header>
 
@@ -391,6 +391,174 @@
   <div class="section-divider"></div>
 
   <div class="grid">
+
+    <!-- ── AWS Restaurant App (Team Lead) ── -->
+    <div class="card" style="--card-accent: linear-gradient(90deg,#ff9d6c,#f6d860);">
+      <div class="card-header">
+        <div class="card-icon" style="--icon-bg: rgba(255,157,108,.15);">☁️</div>
+        <div class="card-title-block">
+          <div class="card-title">AWS Restaurant Platform</div>
+          <div class="card-subtitle">Team Lead · Serverless Reservation & BI System</div>
+        </div>
+      </div>
+
+      <p class="card-overview">Led the team building a fully serverless, multi-location restaurant management platform on AWS — handling table reservations, menus, staff workflows, customer feedback, order management, and automated weekly business-intelligence reports. Event-driven processing decouples the API hot path from background aggregation.</p>
+
+      <div class="tags">
+        <span class="tag">Python 3.13</span><span class="tag">AWS Lambda</span><span class="tag">API Gateway</span>
+        <span class="tag">DynamoDB</span><span class="tag">Cognito</span><span class="tag">SQS</span>
+        <span class="tag">EventBridge</span><span class="tag">SES</span><span class="tag">React 19</span>
+        <span class="tag">TypeScript</span><span class="tag">Syndicate IaC</span>
+      </div>
+
+      <details>
+        <summary>View Details</summary>
+        <div class="details-body">
+          <div>
+            <div class="detail-section-title">Architecture</div>
+            <ul class="features">
+              <li><strong>3 Lambda Functions:</strong> ApiHandler (sync REST), DataCaptureLambda (SQS consumer for aggregation), ReportSenderLambda (scheduled BI)</li>
+              <li><strong>API Gateway + Cognito:</strong> 40+ REST endpoints with CORS, request validation, and role-based group auth</li>
+              <li><strong>DynamoDB:</strong> 18 tables with GSIs; Cognito sub IDs as primary keys for referential integrity</li>
+              <li><strong>Async Pipeline:</strong> Writes publish to SQS → aggregated into report tables; EventBridge cron fires weekly SES reports</li>
+            </ul>
+          </div>
+          <div>
+            <div class="detail-section-title">Key Features</div>
+            <ul class="features">
+              <li><strong>Smart Reservations:</strong> 90-minute slot booking with automatic waiter assignment and conflict detection</li>
+              <li><strong>Multi-Location:</strong> Per-location menus, tables, staff, and specialty dishes</li>
+              <li><strong>Role-Based Access:</strong> Customer, Waiter, and Admin tiers enforced at gateway + service layer</li>
+              <li><strong>Automated BI:</strong> Sunday-scheduled per-location and per-waiter KPI reports delivered via SES</li>
+            </ul>
+          </div>
+          <div class="impact">
+            <div class="detail-section-title" style="margin-bottom:8px;">Impact</div>
+            <ul>
+              <li>Fully infrastructure-as-code via AWS Syndicate for reproducible deploys</li>
+              <li>50+ pytest unit tests plus a full end-to-end suite that deploys an isolated AWS env and generates a PDF report</li>
+              <li>React 19 + TypeScript + Vite + Tailwind frontend with PrimeReact components</li>
+            </ul>
+          </div>
+          <a class="gh-link" href="https://github.com/Hpro444/aws-restaurant-app.git" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </details>
+    </div>
+
+    <!-- ── ScreenSmart (2nd Place Hackathon) ── -->
+    <div class="card" style="--card-accent: linear-gradient(90deg,#ff6584,#00c8ff);">
+      <div class="card-header">
+        <div class="card-icon" style="--icon-bg: rgba(255,101,132,.15);">🛡️</div>
+        <div class="card-title-block">
+          <div class="card-title">ScreenSmart 🏆</div>
+          <div class="card-subtitle">2nd Place · Garaza Hackathon · Real-Time Sanctions Screening</div>
+        </div>
+      </div>
+
+      <p class="card-overview">Real-time sanctions screening platform that evaluates financial payments against sanctioned-entity databases in sub-second latency. Each payment gets a tiered verdict (MATCH / REVIEW / NO_MATCH) with a calibrated confidence score and human-readable explanation — solving the real business problem of precision, not just speed. Awarded 2nd place at Garaza's Hackathon.</p>
+
+      <div class="tags">
+        <span class="tag">Python 3.12</span><span class="tag">FastAPI</span><span class="tag">Apache Kafka</span>
+        <span class="tag">PostgreSQL 16</span><span class="tag">LightGBM</span><span class="tag">RapidFuzz</span>
+        <span class="tag">LangGraph</span><span class="tag">Ollama</span><span class="tag">React 18</span>
+        <span class="tag">Docker</span>
+      </div>
+
+      <details>
+        <summary>View Details</summary>
+        <div class="details-body">
+          <div>
+            <div class="detail-section-title">Multi-Stage Matching Funnel</div>
+            <ul class="features">
+              <li><strong>Stage 0–1:</strong> Exact hash + wallet set lookup, then IDF-weighted phonetic blocking narrows 70k+ entities to ~tens of candidates</li>
+              <li><strong>Stage 2:</strong> Fuzzy scoring (token_sort, WRatio, Jaro-Winkler, phonetic agreement)</li>
+              <li><strong>Stage 3:</strong> LightGBM calibrated precision model over 15 features (name similarity, DOB, country, ID numbers)</li>
+              <li><strong>Stage 4:</strong> Risk-adjusted thresholds route hits to auto-block or analyst review</li>
+            </ul>
+          </div>
+          <div>
+            <div class="detail-section-title">Key Features</div>
+            <ul class="features">
+              <li><strong>Event-Driven Pipeline:</strong> Kafka scatter-gather with two engines — name/ID matching and crypto graph-hop exposure tracing — joined by worst-of logic</li>
+              <li><strong>Live Analyst Dashboard:</strong> Particle-field visualization, dossier drill-down, and graph node exploration over WebSocket</li>
+              <li><strong>Feedback Loop:</strong> Flagged accounts become risk nodes, re-running tracing to catch future indirect exposure</li>
+              <li><strong>AI Explanations:</strong> Local Ollama (llama3.2) + LangGraph explain in plain language why a payment was flagged — nothing leaves the machine</li>
+            </ul>
+          </div>
+          <div class="impact">
+            <div class="detail-section-title" style="margin-bottom:8px;">Impact</div>
+            <ul>
+              <li>70,811 entities / 290k name variants in RAM; p99 ≈ 92 ms, well under the 1-second SLA</li>
+              <li>Block precision 0.85, flag-recall 0.90, over-block rate 0.55% — optimized for the business metric, not just latency</li>
+              <li>Merged 11 public sanctions sources (OFAC, UN, OFSI, OpenSanctions) into versioned, hot-swappable snapshots</li>
+            </ul>
+          </div>
+          <a class="gh-link" href="https://github.com/Hpro444/ScreenSmart.git" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </details>
+    </div>
+
+    <!-- ── Banka 1 Backend (Team Lead) ── -->
+    <div class="card" style="--card-accent: linear-gradient(90deg,#10b981,#00c8ff);">
+      <div class="card-header">
+        <div class="card-icon" style="--icon-bg: rgba(16,185,129,.15);">🏦</div>
+        <div class="card-title-block">
+          <div class="card-title">Banka 1 — Banking Platform</div>
+          <div class="card-subtitle">Team Lead · Production-Grade Banking Microservices</div>
+        </div>
+      </div>
+
+      <p class="card-overview">Led the team building a full digital-banking ecosystem of consolidated microservices — accounts, cards, transactions, trading, market data, credit, interbank settlement, and distributed saga orchestration. Migrated a 15-service Java/Spring Boot monolith into 8 high-performance Go services, with a full observability stack and enterprise-grade security.</p>
+
+      <div class="tags">
+        <span class="tag">Go 1.25</span><span class="tag">Java 21</span><span class="tag">Spring Boot</span>
+        <span class="tag">PostgreSQL 16</span><span class="tag">RabbitMQ</span><span class="tag">Redis</span>
+        <span class="tag">InfluxDB</span><span class="tag">gRPC</span><span class="tag">Docker</span>
+        <span class="tag">OpenTelemetry</span><span class="tag">Prometheus</span><span class="tag">Grafana</span>
+      </div>
+
+      <details>
+        <summary>View Details</summary>
+        <div class="details-body">
+          <div>
+            <div class="detail-section-title">Architecture</div>
+            <ul class="features">
+              <li><strong>8 Go Microservices:</strong> User, Banking Core, Market, Trading, Credit, Notification, Saga Orchestrator, Interbank — behind an NGINX gateway</li>
+              <li><strong>Event-Driven Sagas:</strong> RabbitMQ-coordinated distributed transactions with LIFO compensation on failure</li>
+              <li><strong>Shared Go Platform:</strong> Common modules for HTTP/gRPC routing, JWT auth, DB pooling, and encryption via a Go workspace monorepo</li>
+              <li><strong>Data Layer:</strong> PostgreSQL (7 isolated DBs), InfluxDB time-series market data, Redis price cache</li>
+            </ul>
+          </div>
+          <div>
+            <div class="detail-section-title">Key Features</div>
+            <ul class="features">
+              <li><strong>Full Banking Operations:</strong> Multi-currency accounts, cards, margin trading, and 2PC interbank (ACH/SWIFT) settlement</li>
+              <li><strong>Trading Engine:</strong> Order matching, portfolio analytics, OTC contracts, and option exercise</li>
+              <li><strong>Security:</strong> JWT HS256, Argon2id hashing, AES-GCM client-data encryption, role-based access control</li>
+              <li><strong>Observability:</strong> OpenTelemetry traces, Prometheus metrics, Jaeger, Loki logs, Grafana dashboards, and Discord alerting</li>
+            </ul>
+          </div>
+          <div class="impact">
+            <div class="detail-section-title" style="margin-bottom:8px;">Impact</div>
+            <ul>
+              <li>Consolidated 15 legacy services into 8 lean Go binaries for lower resource use</li>
+              <li>GitHub Actions CI/CD with proto linting, integration tests, and Toxiproxy chaos testing of sagas</li>
+              <li>Go ↔ Java API parity validation tooling ensured a regression-free migration</li>
+            </ul>
+          </div>
+          <a class="gh-link" href="https://github.com/Hpro444/Banka-1-Backend.git" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </details>
+    </div>
 
     <!-- ── 1. Bagley ── -->
     <div class="card" style="--card-accent: linear-gradient(90deg,#6c63ff,#00c8ff);">
@@ -443,6 +611,48 @@
       </details>
     </div>
 
+    <!-- ── 4. Hate Speech Detection ── -->
+    <div class="card" style="--card-accent: linear-gradient(90deg,#f6d860,#ff9d6c);">
+      <div class="card-header">
+        <div class="card-icon" style="--icon-bg: rgba(246,216,96,.12);">🛡️</div>
+        <div class="card-title-block">
+          <div class="card-title">Multimodal Hate Speech Detection</div>
+          <div class="card-subtitle">Safe Content Analysis Platform</div>
+        </div>
+      </div>
+
+      <p class="card-overview">End-to-end system for identifying and filtering harmful content across text, audio, and video. Combines OCR, STT, translation, classification, and summarization to transform raw media into safe content summaries.</p>
+
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Hugging Face</span><span class="tag">PyTorch</span>
+        <span class="tag">OpenAI API</span><span class="tag">Tesseract</span><span class="tag">LangChain</span>
+        <span class="tag">Docker</span>
+      </div>
+
+      <details>
+        <summary>View Details</summary>
+        <div class="details-body">
+          <div>
+            <div class="detail-section-title">Key Features</div>
+            <ul class="features">
+              <li><strong>Multimodal Processing:</strong> Text, audio, and video pipelines</li>
+              <li><strong>Semantic Classification:</strong> NLP + LLM models for context-aware detection</li>
+              <li><strong>Translation & Summarization:</strong> Multilingual moderation support</li>
+              <li><strong>Pipeline Automation:</strong> Modular, containerized, reproducible workflow</li>
+            </ul>
+          </div>
+          <div class="impact">
+            <div class="detail-section-title" style="margin-bottom:8px;">Impact</div>
+            <ul>
+              <li>Proactive content moderation reducing harmful content exposure</li>
+              <li>Fully automated, auditable pipeline</li>
+              <li>Supports real-time streaming and multilingual expansion</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </div>
+
     <!-- ── 2. Predictive Alerting ── -->
     <div class="card" style="--card-accent: linear-gradient(90deg,#ff6584,#ff9d6c);">
       <div class="card-header">
@@ -482,6 +692,115 @@
             </ul>
           </div>
           <a class="gh-link" href="https://github.com/Hpro444/PredictiveAlertingModel.git" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </details>
+    </div>
+
+    <!-- ── PeerMarket ── -->
+    <div class="card" style="--card-accent: linear-gradient(90deg,#818cf8,#06b6d4);">
+      <div class="card-header">
+        <div class="card-icon" style="--icon-bg: rgba(129,140,248,.15);">🔗</div>
+        <div class="card-title-block">
+          <div class="card-title">PeerMarket</div>
+          <div class="card-subtitle">Decentralized P2P Marketplace on Chord DHT</div>
+        </div>
+      </div>
+
+      <p class="card-overview">Fully distributed peer-to-peer marketplace built on the Chord Distributed Hash Table protocol. Nodes form a structured overlay ring using consistent hashing for decentralized key-value storage and item listings, with fault tolerance, replication, and linearized purchase transactions — implemented in pure Java with no external dependencies.</p>
+
+      <div class="tags">
+        <span class="tag">Java</span><span class="tag">Chord DHT</span><span class="tag">Ricart-Agrawala</span>
+        <span class="tag">TCP Sockets</span><span class="tag">Distributed Systems</span><span class="tag">Concurrency</span>
+        <span class="tag">Consistent Hashing</span>
+      </div>
+
+      <details>
+        <summary>View Details</summary>
+        <div class="details-body">
+          <div>
+            <div class="detail-section-title">Key Features</div>
+            <ul class="features">
+              <li><strong>Chord Ring Management:</strong> Nodes join via finger tables and successor lists for O(log N) routing across the overlay</li>
+              <li><strong>Linearized Atomic Purchases:</strong> Ricart-Agrawala distributed mutual exclusion ensures concurrent buyers can't race on the same item</li>
+              <li><strong>Two-Tier Fault Detection:</strong> 1-second heartbeats with weak (4s) suspicion and strong (10s) failure declaration</li>
+              <li><strong>Automatic Replication:</strong> Each node's items are backed up on its successor and promoted on failure</li>
+            </ul>
+          </div>
+          <div>
+            <div class="detail-section-title">Architecture</div>
+            <ul class="features">
+              <li><strong>Message-Passing Core:</strong> 26 distinct message types with a handler each, dispatched on a work-stealing thread pool</li>
+              <li><strong>DHT Operations:</strong> PUT/GET routed via finger table (ASK_GET → TELL_GET pattern)</li>
+              <li><strong>Marketplace Layer:</strong> List, search (ring flood), and pub/sub notifications (SUBSCRIBE / MARKET_NOTIFY)</li>
+              <li><strong>Thread-Safe State:</strong> ConcurrentHashMap caches and synchronized critical sections for items and mutex state</li>
+            </ul>
+          </div>
+          <div class="impact">
+            <div class="detail-section-title" style="margin-bottom:8px;">Impact</div>
+            <ul>
+              <li>Demonstrates core distributed-systems primitives — consistent hashing, distributed mutex, and failure detection — from scratch</li>
+              <li>No frameworks: pure Java sockets and serialization over a configurable N-node ring</li>
+            </ul>
+          </div>
+          <a class="gh-link" href="https://github.com/Hpro444/PeerMarket.git" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </details>
+    </div>
+
+    <!-- ── Productivity Buddy ── -->
+    <div class="card" style="--card-accent: linear-gradient(90deg,#fbbf24,#34d399);">
+      <div class="card-header">
+        <div class="card-icon" style="--icon-bg: rgba(251,191,36,.15);">⏱️</div>
+        <div class="card-title-block">
+          <div class="card-title">Productivity Buddy</div>
+          <div class="card-subtitle">Real-Time Desktop Process & Time Tracker</div>
+        </div>
+      </div>
+
+      <p class="card-overview">JavaFX desktop app that monitors process utilization and time spent across applications in real time. Scans running OS processes every 2 seconds, reports live CPU/RAM usage per process, and automatically tracks cumulative time grouped into user-defined categories — visualized in an interactive pie chart.</p>
+
+      <div class="tags">
+        <span class="tag">Java 21</span><span class="tag">JavaFX 21</span><span class="tag">OSHI</span>
+        <span class="tag">Jackson</span><span class="tag">Maven</span><span class="tag">JUnit 5</span>
+        <span class="tag">Concurrency</span>
+      </div>
+
+      <details>
+        <summary>View Details</summary>
+        <div class="details-body">
+          <div>
+            <div class="detail-section-title">Architecture</div>
+            <ul class="features">
+              <li><strong>Thread-Safe by Design:</strong> Mutable JavaFX models live only on the FX thread; immutable snapshots cross to background workers via AtomicReference</li>
+              <li><strong>Parallel Scanning:</strong> ForkJoinPool ranks CPU/RAM across the OS process list per scan</li>
+              <li><strong>Dedicated Schedulers:</strong> Separate executors for scanning, analytics, snapshots, async file I/O, and a NIO file watcher</li>
+              <li><strong>Graceful Shutdown:</strong> Flushes all tracked time to disk before exit — no data loss</li>
+            </ul>
+          </div>
+          <div>
+            <div class="detail-section-title">Key Features</div>
+            <ul class="features">
+              <li><strong>Live Monitoring:</strong> Per-process CPU % and RAM %, with instances of the same executable merged into expandable rows</li>
+              <li><strong>Automatic Time Tracking:</strong> Accumulates per-process duration across sessions, persisted to JSON; freezable per process</li>
+              <li><strong>Categorize & Drill Down:</strong> Assign Work / Fun / Other categories; pie chart by category with top-10 detail views</li>
+              <li><strong>Per-Process Actions:</strong> Kill, alias, freeze tracking, or recategorize; live external reload via file watcher</li>
+            </ul>
+          </div>
+          <div class="impact">
+            <div class="detail-section-title" style="margin-bottom:8px;">Impact</div>
+            <ul>
+              <li>Responsive UI even under heavy scanning thanks to off-thread analytics and async I/O</li>
+              <li>Periodic and fixed-time CSV snapshots enable time-series analysis of productivity patterns</li>
+              <li>Distributed as a standalone jlink runtime image for Windows</li>
+            </ul>
+          </div>
+          <a class="gh-link" href="https://github.com/Hpro444/MyTaskManager.git" target="_blank">
             <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             View on GitHub
           </a>
@@ -538,48 +857,6 @@
             <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             View on GitHub
           </a>
-        </div>
-      </details>
-    </div>
-
-    <!-- ── 4. Hate Speech Detection ── -->
-    <div class="card" style="--card-accent: linear-gradient(90deg,#f6d860,#ff9d6c);">
-      <div class="card-header">
-        <div class="card-icon" style="--icon-bg: rgba(246,216,96,.12);">🛡️</div>
-        <div class="card-title-block">
-          <div class="card-title">Multimodal Hate Speech Detection</div>
-          <div class="card-subtitle">Safe Content Analysis Platform</div>
-        </div>
-      </div>
-
-      <p class="card-overview">End-to-end system for identifying and filtering harmful content across text, audio, and video. Combines OCR, STT, translation, classification, and summarization to transform raw media into safe content summaries.</p>
-
-      <div class="tags">
-        <span class="tag">Python</span><span class="tag">Hugging Face</span><span class="tag">PyTorch</span>
-        <span class="tag">OpenAI API</span><span class="tag">Tesseract</span><span class="tag">LangChain</span>
-        <span class="tag">Docker</span>
-      </div>
-
-      <details>
-        <summary>View Details</summary>
-        <div class="details-body">
-          <div>
-            <div class="detail-section-title">Key Features</div>
-            <ul class="features">
-              <li><strong>Multimodal Processing:</strong> Text, audio, and video pipelines</li>
-              <li><strong>Semantic Classification:</strong> NLP + LLM models for context-aware detection</li>
-              <li><strong>Translation & Summarization:</strong> Multilingual moderation support</li>
-              <li><strong>Pipeline Automation:</strong> Modular, containerized, reproducible workflow</li>
-            </ul>
-          </div>
-          <div class="impact">
-            <div class="detail-section-title" style="margin-bottom:8px;">Impact</div>
-            <ul>
-              <li>Proactive content moderation reducing harmful content exposure</li>
-              <li>Fully automated, auditable pipeline</li>
-              <li>Supports real-time streaming and multilingual expansion</li>
-            </ul>
-          </div>
         </div>
       </details>
     </div>
